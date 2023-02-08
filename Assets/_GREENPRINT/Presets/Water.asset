@@ -15,11 +15,11 @@ MonoBehaviour:
   Sector: Water
   Prefab: {fileID: 7735034991286072910, guid: 3ae2902f0b00b6a44b3b0c327a94e109, type: 3}
   Population: 0
-  inLabor: 5
+  inLabor: 1
   outLabor: 0
-  inPower: 100
+  inPower: 0
   outPower: 0
   inWater: 0
-  outWater: 100
+  outWater: 70000
   inFood: 0
   outFood: 0

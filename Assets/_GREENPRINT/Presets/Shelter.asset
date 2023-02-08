@@ -17,9 +17,9 @@ MonoBehaviour:
   Population: 1
   inLabor: 0
   outLabor: 20
-  inPower: 50
+  inPower: 210
   outPower: 0
-  inWater: 50
+  inWater: 700
   outWater: 0
-  inFood: 5
+  inFood: 21
   outFood: 0

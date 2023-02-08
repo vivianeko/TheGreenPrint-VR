@@ -15,10 +15,10 @@ MonoBehaviour:
   Sector: Power
   Prefab: {fileID: 5741766748911867679, guid: bbb5d1158bee1414bbad96a0cb16b231, type: 3}
   Population: 0
-  inLabor: 5
+  inLabor: 1
   outLabor: 0
   inPower: 0
-  outPower: 200
+  outPower: 210
   inWater: 0
   outWater: 0
   inFood: 0
