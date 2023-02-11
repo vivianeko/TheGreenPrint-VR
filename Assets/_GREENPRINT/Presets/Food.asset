@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Food
   m_EditorClassIdentifier: 
   Sector: Food
-  Prefab: {fileID: 5329948357966519325, guid: 0c9b1ef7adbf88d4e8388476e050c24e, type: 3}
+  Prefab: {fileID: 2794691658409480375, guid: 0c9b1ef7adbf88d4e8388476e050c24e, type: 3}
   Population: 0
   inLabor: 10
   outLabor: 0

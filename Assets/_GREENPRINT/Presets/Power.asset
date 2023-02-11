@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Power
   m_EditorClassIdentifier: 
   Sector: Power
-  Prefab: {fileID: 5741766748911867679, guid: bbb5d1158bee1414bbad96a0cb16b231, type: 3}
+  Prefab: {fileID: 645108941942163916, guid: bbb5d1158bee1414bbad96a0cb16b231, type: 3}
   Population: 0
   inLabor: 1
   outLabor: 0

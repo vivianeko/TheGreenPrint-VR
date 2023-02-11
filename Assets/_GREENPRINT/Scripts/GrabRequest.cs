@@ -1,29 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Normal.Realtime;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class GrabRequest : MonoBehaviour
 {
     private RealtimeTransform realtimeTransform;
-    private XRGrabInteractable xrGrabInteractable;
+    private XRGrabInteractable interactable;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         realtimeTransform = GetComponent<RealtimeTransform>();
-        xrGrabInteractable = GetComponent<XRGrabInteractable>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!realtimeTransform.isOwnedRemotelyInHierarchy && (xrGrabInteractable.isSelected ))
-            realtimeTransform.RequestOwnership(); 
+        if (interactable.isSelected && !realtimeTransform.isOwnedLocallySelf)
+        {
+            interactable.interactionManager.CancelInteractableSelection(interactable);
+        }
     }
 
+    protected void OnEnable()
+    {
+        interactable = GetComponent<XRGrabInteractable>();
+        if (interactable != null)
+        {
+            interactable.hoverEntered.AddListener(OnSelectEntered);
+        }
+    }
 
+    protected void OnDisable()
+    {
+        if (interactable != null)
+        {
+            interactable.hoverEntered.RemoveListener(OnSelectEntered);
+        }
+    }
 
+    public void OnSelectEntered(HoverEnterEventArgs args)
+    {
+        realtimeTransform.RequestOwnership();
+    }
 
 }

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-using TMPro;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Block Preset", menuName = "New Block Preset")]
 public class BlockPreset : ScriptableObject

@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using TMPro;
 using Normal.Realtime;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,13 +23,12 @@ public class GameManager : MonoBehaviour
     public BlockPreset block = null;
     public GameObject[] blocks;    
     [Space]
-    public GameObject LaborIcon;
-    public GameObject PowerIcon;
-    public GameObject WaterIcon;
-    public GameObject FoodIcon;    
+    public Image LaborIcon;
+    public Image PowerIcon;
+    public Image WaterIcon;
+    public Image FoodIcon;    
     [Space]
     public int Population = 0;
-    [Space]
     public int CurrentLabor = 0;
     public int CurrentPower = 0;
     public int CurrentWater = 0;
@@ -43,9 +41,7 @@ public class GameManager : MonoBehaviour
     #region placeblock
     public void Start()
     {
-        CheckBlocks();
-        UpdateStats();
-        //InvokeRepeating("NextDay", 0, 20);
+        InvokeRepeating("CheckBlocks", 0, 1);
     }
 
 
@@ -56,21 +52,17 @@ public class GameManager : MonoBehaviour
 
     public void placeblock()
     {
-        Realtime.Instantiate(block.Prefab.name, GameObject.FindGameObjectWithTag("reticle").transform.position, Quaternion.identity, options: default);
-        //onplaceblock(block);
+        Transform reticle = GameObject.FindGameObjectWithTag("reticle").transform;
+        Realtime.Instantiate(block.Prefab.name, reticle.position, Quaternion.identity, new Realtime.InstantiateOptions
+        {
+            ownedByClient = false,
+            preventOwnershipTakeover = false,
+            destroyWhenOwnerLeaves = false,
+            destroyWhenLastClientLeaves = true
+        });
         CheckBlocks();
     }
     #endregion
-
-   public void onplaceblock(BlockPreset block)
-    {
-        Population += block.Population;
-        CurrentLabor = CurrentLabor + block.outLabor - block.inLabor;
-        CurrentPower = CurrentPower + block.outPower - block.inPower;
-        CurrentWater = CurrentWater + block.outWater - block.inWater;
-        CurrentFood = CurrentFood + block.outFood - block.inFood;       
-        UpdateStats();
-    }
 
     public void CheckBlocks()
     {
@@ -98,24 +90,24 @@ public class GameManager : MonoBehaviour
     public void UpdateStats()
     {
         if (CurrentLabor < 0)
-            LaborIcon.SetActive(true);
+            LaborIcon.enabled = true;
         else
-            LaborIcon.SetActive(false);
+            LaborIcon.enabled = false;
 
         if (CurrentPower < 0)
-            PowerIcon.SetActive(true);
+            PowerIcon.enabled = true;
         else
-            PowerIcon.SetActive(false);
+            PowerIcon.enabled = false;
 
         if (CurrentWater < 0)
-            WaterIcon.SetActive(true);
+            WaterIcon.enabled = true;
         else
-            WaterIcon.SetActive(false);
+            WaterIcon.enabled = false;
 
         if (CurrentFood < 0)
-            FoodIcon.SetActive(true);
+            FoodIcon.enabled = true;
         else
-            FoodIcon.SetActive(false);
+            FoodIcon.enabled = false;
 
         string n = Environment.NewLine;
         statsText.text ="  // Available Labor: " + CurrentLabor + "hrs" + "  // Available Power: " + CurrentPower + "kw/hr" + n+ "  // Available Water: " + CurrentWater + "gl" + "  // Available Food: " + CurrentFood + "lbs";

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -15,13 +13,6 @@ public class SelectedBlockInfo : MonoBehaviour
     public TextMeshProUGUI waterout;
     public TextMeshProUGUI foodin;
     public TextMeshProUGUI foodout;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
 
     // Update is called once per frame
     public void updatestats(BlockPreset _preset)

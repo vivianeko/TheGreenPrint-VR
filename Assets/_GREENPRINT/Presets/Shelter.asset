@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shelter
   m_EditorClassIdentifier: 
   Sector: Shelter
-  Prefab: {fileID: 6400230408528037891, guid: d1a45ca0681850748aae5478e3fd8096, type: 3}
+  Prefab: {fileID: 6672015482146548830, guid: d1a45ca0681850748aae5478e3fd8096, type: 3}
   Population: 1
   inLabor: 0
   outLabor: 20
